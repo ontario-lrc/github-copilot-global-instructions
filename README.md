@@ -68,3 +68,7 @@ Each file begins with frontmatter that controls when Copilot uses it:
 - [Use custom instructions in VS Code](https://code.visualstudio.com/docs/agent-customization/custom-instructions)
 - [Adding custom instructions for GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-custom-instructions)
 - [Support for different types of custom instructions](https://docs.github.com/en/copilot/reference/custom-instructions-support)
+
+## Licence
+
+This collection is licensed under [Creative Commons Zero v1.0 Universal (CC0 1.0)](https://creativecommons.org/publicdomain/zero/1.0/). Its author has dedicated the work to the public domain, so you can copy, modify, distribute, and use it, even for commercial purposes, without asking permission.
