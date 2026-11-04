@@ -1,6 +1,6 @@
 # GitHub Copilot Instruction Files
 
-This repository holds user-level custom instruction files (`*.instructions.md`) for GitHub Copilot. They tell Copilot how to write code, handle security, and communicate in chat and agent sessions in Visual Studio Code (VS Code) and the GitHub Copilot command-line interface (CLI). Once installed, they apply in every project you open. They do not affect the inline suggestions that appear as you type.
+This repository holds user-level custom instruction files (`*.instructions.md`) for GitHub Copilot. They tell Copilot how to write code, handle security and accessibility, and communicate in chat and agent sessions in Visual Studio Code (VS Code) and the GitHub Copilot command-line interface (CLI). Once installed, they apply in every project you open. They do not affect the inline suggestions that appear as you type.
 
 ## Where They Go
 
@@ -27,6 +27,7 @@ Copy the newer files over your existing copies. If a file is removed or renamed 
 - If you set the `COPILOT_HOME` environment variable, Copilot CLI reads the `instructions` folder inside that location instead.
 - VS Code Settings Sync does not copy this folder, so repeat these steps on each computer.
 - According to GitHub's [support matrix](https://docs.github.com/en/copilot/reference/custom-instructions-support), Copilot in Eclipse, Visual Studio, and Xcode supports only repository-level instruction files, so it does not read this folder.
+- `accessibility.instructions.md` refers to the `accessibility-audit` skill for audits, reviews, and legal citations. The skill is not part of this repository; Copilot reads personal skills from `~/.copilot/skills/`. Without the skill, the file's rules still apply.
 
 ## What They Do
 
@@ -40,6 +41,7 @@ Each file begins with frontmatter that controls when Copilot uses it:
 | [copilot.instructions.md](copilot.instructions.md) | All files | Sets the global rules listed below and points Copilot to the other files. |
 | [coding-standards.instructions.md](coding-standards.instructions.md) | Source, markup, stylesheet, configuration, and script files in common languages | Sets rules for identifier names, renaming, and capitalization, and requires lookup maps instead of `switch` statements, explicit types, small functions, Allman braces, and tab indentation. |
 | [secure-coding.instructions.md](secure-coding.instructions.md) | Code, markup, configuration, script, and infrastructure files, including `Dockerfile*` and `.env*` | Sets a security workflow of threat-aware design, self-review, and severity-based fixes, plus technology-specific and defensive-coding rules. |
+| [accessibility.instructions.md](accessibility.instructions.md) | Markup, templates, stylesheets, source code in most languages, vector graphics, documents, and translation, message, and design-token files | Sets the legal baseline under the Accessibility for Ontarians with Disabilities Act, with Web Content Accessibility Guidelines 2.0 Level AA as the legal floor and criteria from the latest versions as labelled recommendations, plus rules for semantics, keyboard and focus, forms and errors, colour, contrast, motion, content, and conformance claims. |
 | [typescript.instructions.md](typescript.instructions.md) | TypeScript and JavaScript files | Requires strict equality, template literals, explicit type annotations, and precise types instead of `any`. |
 | [java.instructions.md](java.instructions.md) | Java files | Forbids raw types, names `final` fields in upper snake case, and uses `Map` for lookup maps. |
 | [stylesheets.instructions.md](stylesheets.instructions.md) | Stylesheet files (`.scss` and `.css`) | Allows only standard features without vendor prefixes, unless the team approves an exception, and sets formatting and class-naming rules. |
