@@ -7,7 +7,7 @@ applyTo: "**"
 
 Apply these instructions to every task, prompt, project, file, agent, subagent, and model, whether or not files are attached, before planning, delegating, modifying files, executing commands, or responding.
 
-Also follow each topic-specific instruction file in `~/.copilot/instructions/` whose `description` or `applyTo` matches the task: `coding-standards`, `typescript`, `java`, `stylesheets`, `secure-coding`, and `instruction-files`.
+Also follow each topic-specific instruction file in `~/.copilot/instructions/` whose `description` or `applyTo` matches the task: `coding-standards`, `typescript`, `java`, `stylesheets`, `secure-coding`, `accessibility`, and `instruction-files`.
 
 ## Precedence
 
