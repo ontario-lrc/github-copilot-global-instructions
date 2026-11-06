@@ -1,39 +1,28 @@
 ---
-description: Use when writing, changing, or reviewing stylesheets, including styles embedded in templates or components.
-applyTo: "**/*.{scss,css}"
+description: Use when writing, changing, or reviewing TypeScript or JavaScript code.
+applyTo: "**/*.{ts,tsx,mts,cts,js,jsx,mjs,cjs}"
 ---
 
-# Stylesheets
+# TypeScript and JavaScript
 
-These rules cover all Sassy Cascading Style Sheets (SCSS) and Cascading Style Sheets (CSS), including styles embedded in templates or components, test stylesheets, and generated stylesheet source maintained by the project.
-
-## Standards Compliance
-
-- Use only selectors, properties, values, functions, at-rules, pseudo-classes, and pseudo-elements defined by official World Wide Web Consortium specifications.
-- Do not use experimental, proprietary, deprecated, browser-specific, or non-standard features unless their use is explicitly required and approved by the team. This includes vendor-prefixed selectors, pseudo-classes, and pseudo-elements, such as `::-webkit-scrollbar`, `::-webkit-scrollbar-track`, `::-webkit-scrollbar-thumb`, and `::-moz-range-thumb`.
-- When a standardized equivalent exists, such as `scrollbar-width` or `scrollbar-color`, use it instead. Otherwise, omit the styling and rely on browser defaults.
-
-## Formatting
-
-- Place each property declaration on its own line.
-- End every declaration with a semicolon, including the final declaration in a block.
-- Use double quotes for string values.
-- Leave one blank line between sibling rule blocks.
-- Do not leave a blank line before the first nested child of a block.
-- Place each selector in a comma-separated selector list on its own line.
-- Use camel case for class names unless an established naming convention requires another format.
+- Always use strict equality (`===`) and strict inequality (`!==`) instead of loose equality (`==`) and loose inequality (`!=`). Loose operators perform implicit type coercion, which can conceal type mismatches and introduce unexpected behaviour.
+- Prefer template literals, which use backticks and `${...}` interpolation, over string concatenation when embedding expressions or constructing strings from multiple parts.
+- In TypeScript, write `const recordCount: number = 0;` rather than `const recordCount = 0;`, and `private readonly customerAccounts: CustomerAccount[] = [];` rather than relying on inference.
+- Annotate every return type, including `void` and `Promise<void>`.
+- Never use `any`. Use a precise type, a union, a generic type parameter, or `unknown` followed by explicit narrowing.
+- Name `as const` object keys in upper snake case, such as `LARGE: "large"`.
+- Implement lookup maps with `Record<KeyType, ValueType>` or `Map<KeyType, ValueType>`.
+- For styles embedded in components, also follow `stylesheets.instructions.md`.
 
 Brace style:
 
-```scss
-.customer-summary-panel
+```typescript
+if(isEligibleForRenewal)
 {
-	display: flex;
-	gap: 1rem;
-
-	&:hover
-	{
-		opacity: 0.8;
-	}
+	renewSubscription(customerAccount);
+}
+else
+{
+	scheduleRenewalReminder(customerAccount);
 }
 ```
