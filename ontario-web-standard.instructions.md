@@ -20,7 +20,7 @@ These rules summarize version 3.0 of the Government of Ontario Information Techn
 
 ## Accessibility and Design
 
-- Follow `accessibility.instructions.md` on every website and web application, internet or intranet. Ontario ministries must also follow GO-ITS 201PRS OPS Digital Accessibility Standard; when one of its specific requirements matters, ask the user for it instead of inferring it.
+- Follow `accessibility.instructions.md` on every website and web application, internet or intranet. Ontario ministries must also follow GO-ITS 201PRS OPS Digital Accessibility Standard, which that file covers.
 - Use the ODS for every public-facing digital service delivered by an Ontario ministry, or by a provincial agency whose services are integrated with ontario.ca, including procured commercial off-the-shelf software and software-as-a-service products. To add it to an application, use the `add-ontario-design-system` skill.
 - The ODS is not required for internal-facing websites or for agencies whose services are not integrated with ontario.ca. Intranet websites must follow the design elements and content design guidance of the ministry's communications branch.
 - Follow the ODS guidance for navigation, images, and forms, including field labels, buttons, drop-down lists, input formatting, error messages, and live, pre-submission, and post-submission validation.
