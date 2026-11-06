@@ -7,7 +7,9 @@ applyTo: "**"
 
 Apply these instructions to every task, prompt, project, file, agent, subagent, and model, whether or not files are attached, before planning, delegating, modifying files, executing commands, or responding.
 
-Also follow each topic-specific instruction file in `~/.copilot/instructions/` whose `description` or `applyTo` matches the task: `coding-standards`, `typescript`, `java`, `stylesheets`, `secure-coding`, `accessibility`, and `instruction-files`.
+Also follow each topic-specific instruction file in `~/.copilot/instructions/` whose `description` or `applyTo` matches the task: `coding-standards`, `typescript`, `java`, `stylesheets`, `secure-coding`, `accessibility`, `ontario-web-standard`, and `instruction-files`.
+
+Exception: when the active agent is MTG Architect (`~/.copilot/agents/mtg.architect.agent.md`), skip these instructions and the topic-specific files; that agent follows only its own definition and the user's messages.
 
 ## Precedence
 
