@@ -1,29 +1,29 @@
 ---
-description: Use when writing, changing, or reviewing stylesheets, including styles embedded in templates or components.
+description: Apply maintainable CSS and Sass conventions while respecting project browser support and build tooling.
 applyTo: "**/*.{scss,css}"
 ---
 
 # Stylesheets
 
-These rules cover all Sassy Cascading Style Sheets (SCSS) and Cascading Style Sheets (CSS), including styles embedded in templates or components, test stylesheets, and generated stylesheet source maintained by the project.
+These rules apply to CSS and Sass files maintained by the project, including component and test stylesheets. Follow the project's formatter, naming system, design tokens, and supported-browser policy first.
 
-## Standards Compliance
+## Standards and compatibility
 
-- Use only selectors, properties, values, functions, at-rules, pseudo-classes, and pseudo-elements defined by official World Wide Web Consortium specifications.
-- Do not use experimental, proprietary, deprecated, browser-specific, or non-standard features unless their use is explicitly required and approved by the team. This includes vendor-prefixed selectors, pseudo-classes, and pseudo-elements, such as `::-webkit-scrollbar`, `::-webkit-scrollbar-track`, `::-webkit-scrollbar-thumb`, and `::-moz-range-thumb`.
-- When a standardized equivalent exists, such as `scrollbar-width` or `scrollbar-color`, use it instead. Otherwise, omit the styling and rely on browser defaults.
+- Prefer standardised CSS features with established browser support for the project's target matrix.
+- Use vendor-prefixed or browser-specific declarations only when required by the supported browsers or an approved design requirement. Prefer the project's compatibility tooling, such as Autoprefixer, where configured.
+- Do not use deprecated or experimental features without a documented compatibility reason and project approval.
+- Do not add browser-specific scrollbar or control styling merely for decoration. When native controls are preferable or support is inconsistent, preserve usable browser defaults.
 
 ## Formatting
 
-- Place each property declaration on its own line.
-- End every declaration with a semicolon, including the final declaration in a block.
+- Put one declaration on each line and terminate declarations with semicolons.
 - Use double quotes for string values.
 - Leave one blank line between sibling rule blocks.
-- Do not leave a blank line before the first nested child of a block.
-- Place each selector in a comma-separated selector list on its own line.
-- Use camel case for class names unless an established naming convention requires another format.
+- Keep selector lists readable, with each selector on its own line.
+- Follow the project's class naming convention. If none exists, use descriptive names and a consistent convention.
+- Avoid unnecessary specificity, duplicated declarations, and unrelated restyling.
 
-Brace style:
+Brace style when no project formatter defines another convention:
 
 ```scss
 .customer-summary-panel

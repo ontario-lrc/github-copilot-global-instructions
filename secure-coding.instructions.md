@@ -1,66 +1,47 @@
 ---
-description: Use when writing, changing, or reviewing code, scripts, configuration, containers, or infrastructure definitions. Covers the security workflow, self-review, severity handling, technology-specific rules, and defensive coding.
+description: Apply secure-by-default practices when writing, changing, or reviewing code, scripts, configuration, containers, and infrastructure definitions.
 applyTo: "**/*.{ts,tsx,mts,cts,js,jsx,mjs,cjs,java,kt,kts,groovy,gradle,cs,py,go,rs,php,rb,swift,c,cc,cpp,h,hpp,html,sql,json,jsonc,xml,yml,yaml,toml,properties,tf,tfvars,bicep,ps1,psm1,sh,bash,zsh,bat,cmd},**/Dockerfile*,**/.env*"
 ---
 
 # Secure Coding
 
-Treat security as the primary design constraint, not a later refinement. Every generated or modified unit of code must be secure by default and must not introduce a known or probable vulnerability.
+Treat security as a design constraint. Do not introduce a known or probable vulnerability in generated or modified work. Follow applicable project security requirements and established framework protections.
 
 ## Workflow
 
-1. **Threat-aware design.** Before writing code, identify the data it handles, the trust boundaries it crosses, and what an attacker could exploit.
-2. **Secure implementation.** Write code that is secure by construction. Apply the Open Worldwide Application Security Project (OWASP) Top 10, the SANS Top 25, and any applicable Common Weakness Enumeration (CWE) mitigations for the language and framework in use.
-3. **Self-review.** After generating code, review it for vulnerabilities before presenting it as a recommendation.
-4. **Remediate before recommending.** Handle every finding as Severity Handling requires. Never present insecure code as a final recommendation, even with a disclaimer.
-5. **Document the rationale.** When a non-obvious security decision is made, add a brief inline comment prefixed with `// @security:` that explains why.
+1. Identify sensitive data, trust boundaries, entry points, and plausible threats relevant to the change.
+2. Apply relevant secure-design guidance, such as OWASP, CWE, and vendor-specific guidance, without treating broad checklists as a substitute for context.
+3. Review changed code and configuration for security defects before presenting the result.
+4. Remediate vulnerabilities introduced by the change or directly within the approved scope before recommending the change.
+5. Report pre-existing findings outside the approved scope separately. Do not silently expand the task into unrelated remediation; request approval where scope must change.
+6. Add a code comment only when a security decision would otherwise be unclear. Use the comment syntax and conventions of the language; do not add a comment to every defensive check.
 
-## Self-Review Coverage
+## Review coverage
 
-The self-review must check, at minimum, for:
+Consider, where relevant:
 
-- Injection flaws, including Structured Query Language (SQL), operating-system command, Lightweight Directory Access Protocol (LDAP), XPath, template, and header injection
-- Broken authentication and broken session management
-- Sensitive data exposure, including secrets, personally identifiable information (PII), and tokens in logs, responses, or source
-- Extensible Markup Language (XML) and JavaScript Object Notation (JSON) external-entity attacks and insecure deserialization
-- Broken access control, including missing authorization checks, insecure direct object references, and privilege escalation
-- Security misconfiguration, including overly permissive Cross-Origin Resource Sharing (CORS), verbose error messages, and enabled debug flags
-- Cross-site scripting (XSS), whether reflected, stored, or based on the Document Object Model (DOM)
-- Path traversal
-- Cross-site request forgery (CSRF), where applicable
-- Known-vulnerable dependencies and deprecated cryptographic algorithms
-- Race conditions, time-of-check-to-time-of-use defects, and insecure temporary-file handling
+- Injection, including SQL, command, LDAP, XPath, template, and header injection.
+- Authentication, session handling, and authorisation, including insecure direct object references and privilege escalation.
+- Input validation, output encoding, cross-site scripting, path traversal, and cross-site request forgery.
+- Secrets, personal information, tokens, sensitive logs, and error disclosure.
+- Deserialisation, XML external entities, and unsafe file handling.
+- Security configuration, CORS, dependency vulnerabilities, and deprecated cryptography.
+- Race conditions, resource exhaustion, timeouts, retries, and denial-of-service exposure.
 
-## Severity Handling
+## Defensive defaults
 
-- **Critical or high:** Fix in the generated code before presenting it. No exceptions.
-- **Medium:** Fix, or when a fix is structurally impractical in the current change, flag it with a `// @security-todo:` comment that explains the residual risk.
-- **Low or informational:** Fix where practical; otherwise note it in a comment for future hardening.
+- Treat client-supplied and external data as untrusted. Validate type, format, length, range, and permitted values at trust boundaries.
+- Use parameterised queries and safe process APIs. Do not build SQL statements or shell commands by concatenating untrusted input.
+- Preserve framework output sanitisation. Encode output for its destination context.
+- Enforce authorisation on the server and apply least privilege to identities, data, files, networks, and service accounts.
+- Use fail-safe defaults. Do not reveal secrets, personal information, stack traces, or raw internal errors to unauthorised users.
+- Store secrets in approved secret-management facilities, not source, images, manifests, or logs.
+- Handle exceptions deliberately. Preserve diagnostic context without swallowing failures or exposing sensitive details.
+- Release resources deterministically. Use bounded timeouts and retries for remote operations where appropriate.
+- For containers, use least privilege, avoid embedded secrets, and use approved/pinned base images.
+- For shell scripts, quote expansions, handle option parsing safely, and never pass dynamic input to `eval`.
+- Add appropriate negative tests for changed security-sensitive behaviour.
 
-## Technology-Specific Rules
+## Findings and severity
 
-- **Server-side application code:** Never reflect unsanitized user input in an error message. Set the `HttpOnly` and `Secure` cookie flags.
-- **Browser application code:** Rely on the framework's built-in output sanitization, and never bypass it without peer review. Avoid raw markup bindings that carry user-controlled data. Validate route and query parameters. Do not store credentials or long-lived tokens in browser storage.
-- **Databases:** Never return a raw database error to a client.
-- **Containers and infrastructure as code:** Never embed secrets in images, manifests, or templates. Run containers as a non-root user. Pin base-image versions. Limit container capabilities.
-- **Shell and automation scripts:** Quote every variable expansion. Use `--` to terminate option parsing. Never pass dynamic input to `eval`.
-
-## Defensive Coding
-
-These rules apply to all code, including application code, tests, scripts, and infrastructure as code. They are machine-checkable so that reviewers and automated tools can enforce them.
-
-- Never trust client-supplied or environment-supplied data. Validate every input at each external boundary, such as request parameters, path segments, headers, and body fields: check type, format, length, range, and permitted characters, then canonicalize and sanitize it before use. Validate client-supplied data on the server before applying business logic.
-- Guard explicitly against null, undefined, and empty values before dereferencing.
-- Choose fail-safe defaults. On error or missing data, deny the action, take no action, or expose the minimum.
-- Never swallow exceptions. Catch at the appropriate layer, add context, log at error or warning level, and rethrow or map to a domain error.
-- Release resources deterministically using constructs such as try-with-resources or `finally`. Close connections, files, streams, and subscriptions.
-- Use parameterized queries and prepared statements. Never build a query or a command line by string concatenation, and never pass unsanitized input to a process-execution interface.
-- Apply the correct encoding or escaping for each output context, including markup, JSON, SQL, and shell.
-- Never log secrets or PII. Redact sensitive fields consistently and use structured logs with correlation identifiers.
-- Apply timeouts and bounded retries to remote calls, with exponential backoff and circuit breakers where appropriate.
-- Apply least privilege to every resource: file access, database accounts, network access, and service accounts.
-- Add unit tests for normal, edge, and failure cases, including invalid input. Add integration or contract tests when a public interface changes.
-- Run static analysis, linters, and security scanners in continuous integration, and block merges on critical security or reliability violations.
-- Mark unusual defensive checks with a machine-readable comment such as `// @defensive: reason` so that automated reviewers can find the intent.
-
-Treat the following as failing conditions that must be fixed before merging: missing input validation, unchecked null dereferences, swallowed exceptions, string-built queries or commands, unreleased resources, secrets in source or logs, and missing negative tests.
+Prioritise findings by credible impact, likelihood, and confidence. Fix critical or high-severity defects introduced by the work. For existing out-of-scope defects, provide evidence and recommend remediation rather than changing unrelated code without approval. Record residual risk and verification not performed.

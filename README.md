@@ -1,32 +1,40 @@
 # GitHub Copilot Global Instructions
 
-Reusable user-level instructions for GitHub Copilot across projects.
+User-level instructions for GitHub Copilot in Visual Studio Code.
 
 ## Design
-Keep the always-applied `copilot.instructions.md` concise. Put language-, file-, or activity-specific rules in scoped `*.instructions.md` files with accurate `applyTo` patterns and descriptions. Avoid repeating detailed procedures that belong in Agent Skills.
 
-The existing specialised instruction files for coding standards, secure coding, accessibility, Ontario web standards, TypeScript/JavaScript, Java, stylesheets, and instruction-file authoring should be retained. This refresh replaces only the global baseline file; it does not remove those topic-specific files.
+Keep `copilot.instructions.md` short because it applies to every task. Use scoped `*.instructions.md` files for language, file-type, or domain-specific rules. Use Agent Skills for repeatable multi-step procedures. Avoid duplicating the same rule in several files.
 
-## Instructions
+## Instruction inventory
 
-| Instruction | Responsibility |
+| File | Scope |
 |---|---|
-| copilot.instructions.md | Baseline behaviour and guardrails for all Copilot interactions |
-| accessibility.instructions.md | Accessibility requirements, semantic markup, keyboard support, and inclusive UX guidance |
-| coding-standards.instructions.md | Shared coding standards for maintainability, readability, and consistency |
-| secure-coding.instructions.md | Security-focused coding practices, validation, and safe defaults |
-| java.instructions.md | Java-specific conventions, tooling expectations, and implementation guidance |
-| typescript.instructions.md | TypeScript and JavaScript standards, patterns, and quality expectations |
-| stylesheets.instructions.md | CSS and stylesheet conventions for structure, maintainability, and browser compatibility |
-| instruction-files.instructions.md | Authoring guidance for scoped instruction files, metadata, and applyTo patterns |
+| `copilot.instructions.md` | Global baseline and execution guardrails |
+| `coding-standards.instructions.md` | General source-code conventions |
+| `secure-coding.instructions.md` | Secure implementation and self-review |
+| `accessibility.instructions.md` | UI accessibility and user-facing content |
+| `typescript.instructions.md` | TypeScript and JavaScript |
+| `java.instructions.md` | Java |
+| `stylesheets.instructions.md` | CSS and Sass |
+| `ontario-web-standard.instructions.md` | Government of Ontario Web Standard; attach manually only to an in-scope project |
+| `instruction-files.instructions.md` | Authoring and maintaining instruction files |
 
-The repository keeps a concise baseline instruction set plus topic-specific instruction files that are applied only when relevant.
+## Automatic and manual application
+
+Most files use `applyTo` patterns to load only for matching files. `accessibility.instructions.md` is deliberately limited to UI markup, component templates, stylesheets, and localisation resources. For native application interfaces, documents, and other surfaces, invoke the `accessibility-audit` skill or attach the instruction when relevant.
+
+`ontario-web-standard.instructions.md` intentionally has no `applyTo` pattern. Attach it manually only when the project evidence shows that the Government of Ontario Web Standard applies. Do not load it automatically for all web projects.
 
 ## Installation
 
-Copy instruction files into the user-level Copilot instructions directory.
+Copy `*.instructions.md` files into the personal Copilot instructions directory:
+
+- Windows: `%USERPROFILE%\.copilot\instructions`
+- macOS/Linux: `~/.copilot/instructions`
 
 ### Windows PowerShell
+
 ```powershell
 $source = (Get-Location).Path
 $destination = Join-Path $HOME '.copilot\instructions'
@@ -35,15 +43,9 @@ Get-ChildItem -LiteralPath $source -Filter '*.instructions.md' -File |
     Copy-Item -Destination $destination -Force
 ```
 
-### macOS / Linux
-```bash
-destination="$HOME/.copilot/instructions"
-mkdir -p "$destination"
-find . -maxdepth 1 -type f -name '*.instructions.md' -exec cp -f {} "$destination/" \;
-```
-
-Review local changes before overwriting matching files. Do not delete topic-specific instruction files as part of this update.
+Do not copy this README into the instructions directory. Review local edits before overwriting matching files. `ontario-web-standard.instructions.md` must be attached manually for relevant tasks.
 
 ## Companion repositories
+
 - [Global Agents](https://github.com/ontario-lrc/github-copilot-global-agents)
 - [Global Skills](https://github.com/ontario-lrc/github-copilot-global-skills)

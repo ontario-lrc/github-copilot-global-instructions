@@ -1,15 +1,17 @@
 ---
-description: Use when writing, changing, or reviewing Java code.
+description: Apply Java-specific type-safety, naming, collection, and formatting conventions.
 applyTo: "**/*.java"
 ---
 
 # Java
 
-- Never use raw types. Write `List<String>` rather than `List`, and `Map<String, CustomerAccount>` rather than `Map`.
-- Name `final` fields in upper snake case, such as `static final int MAXIMUM_RETRY_COUNT = 3;`.
-- Implement lookup maps with `Map<KeyType, ValueType>`.
+- Do not use raw generic types. Prefer `List<String>` to `List` and `Map<String, CustomerAccount>` to `Map`.
+- Use lower camel case for variables, methods, parameters, and instance fields, including `final` instance fields.
+- Use UPPER_SNAKE_CASE for `static final` constants, consistent with Java conventions.
+- Use `Map<KeyType, ValueType>` for typed key-to-value lookups.
+- Prefer standard language and project conventions over cosmetic refactoring.
 
-Brace style:
+Brace style when the project does not define another formatter convention:
 
 ```java
 public final class CustomerAccountValidator

@@ -1,96 +1,90 @@
 ---
-description: Use when creating, changing, or reviewing a Government of Ontario website, web application, or web content, whether internet or intranet, including Ontario Public Service (OPS), ministry, agency, and vendor work. Covers the scope and requirements of the Government of Ontario Information Technology Standard (GO-ITS) 100PRD Government of Ontario Web Standard, including the Ontario Design System, French language, content, page titles and metadata, links, documents, multimedia, navigation, site search, analytics, privacy, security, forms, feedback, log-in screens, subscriptions, and required approvals.
-applyTo: "**/*.{html,htm,xhtml,shtml,jsp,jspx,tag,tagx,gsp,ftl,ftlh,vm,mustache,hbs,handlebars,ejs,pug,jade,njk,liquid,twig,erb,haml,slim,jinja,jinja2,j2,gohtml,tmpl,xsl,xslt,cshtml,razor,vbhtml,aspx,ascx,master,php,phtml,vue,svelte,astro,mjml,ts,tsx,mts,cts,js,jsx,mjs,cjs,css,scss,sass,less,styl,resx,xlf,xliff,po,pot,arb},**/*{messages,Messages}*.properties,**/{i18n,l10n,locale,locales,lang,translations}/**/*.{json,yml,yaml,properties},**/sitemap*.xml,**/robots.txt"
+description: Use only for a Government of Ontario website, web application, or web-content project that is within the scope of GO-ITS 100PRD.
 ---
 
 # Government of Ontario Web Standard
 
-These rules summarize version 3.0 of the Government of Ontario Information Technology Standard (GO-ITS) 100PRD Government of Ontario Web Standard, published at https://www.ontario.ca/page/go-its-100prd-government-ontario-web-standard. The published standard prevails over this summary. Verify a requirement against it before relying on that requirement in a compliance statement.
+Attach this instruction manually only when the project evidence establishes that the Government of Ontario Web Standard applies. It intentionally has no `applyTo` pattern because it must not load automatically for unrelated web projects.
+
+These rules summarise version 3.0 of the Government of Ontario Information Technology Standard (GO-ITS) 100PRD Government of Ontario Web Standard. The published standard prevails. Verify each requirement against the current published standard before relying on it in a compliance statement:
+
+https://www.ontario.ca/page/go-its-100prd-government-ontario-web-standard
 
 ## Scope
 
-- Apply these rules to Government of Ontario websites and web applications, both internet and intranet, wherever they are hosted, including third-party web services and work by vendors. Multi-jurisdictional sites must meet the whole standard, with a look and feel that the partners agree on.
-- The standard binds ministries, information and information technology clusters, adjudicative and advisory agencies, and other agencies that use Ontario Public Service (OPS) information technology and are bound to it by the Governance and Management of Information Technology Directive or a memorandum of understanding.
-- Do not apply these rules to back-office and administrative interfaces, such as human resources, financial administration, or content-management contribution interfaces.
-- Decide from project evidence, such as the domain, the project documentation, or the use of the Ontario Design System (ODS), whether the work is in scope and whether the site is public-facing or internal. When the evidence does not settle a question that changes the work, ask the user.
-- The standard is mandatory on a go-forward basis, at the next project development or procurement opportunity. Apply it to the work being done, and report other gaps that you notice instead of fixing them unasked.
-- Read must as an absolute requirement. Read should as a recommendation that may be set aside only after its implications, such as for business functionality, security, and cost, are weighed and stated.
-- Treat requirements that come from legislation, such as accessibility, French language services, and privacy legislation, as legal requirements, which rank first in the global precedence order.
-- Never state that a website complies with the standard as a whole. State which requirements the work meets and which still need review or an approval from the last section.
+- Apply to Government of Ontario websites and web applications, on the internet or intranet and wherever hosted, including applicable third-party services and vendor work.
+- The standard binds ministries, information and information technology clusters, adjudicative and advisory agencies, and other agencies bound by the applicable Governance and Management of Information Technology Directive or memorandum of understanding.
+- Do not apply it to back-office and administrative interfaces such as human resources, financial administration, or content-management contribution interfaces.
+- Determine scope from project evidence, including domain, documentation, organisation, hosting, and service integration. Ask the user when evidence does not settle a decision that changes the work.
+- Apply requirements to the work in scope and report unrelated gaps rather than fixing them without approval.
+- Read "must" as a requirement and "should" as a recommendation. Record material reasons when a recommendation is not followed.
+- Treat requirements arising from legislation, such as accessibility, French-language services, and privacy legislation, as legal requirements.
+- Do not state that a site complies with the standard as a whole. Report the specific requirements assessed and any outstanding approval or review.
 
-## Accessibility and Design
+## Accessibility and design
 
-- Follow `accessibility.instructions.md` on every website and web application, internet or intranet. Ontario ministries must also follow GO-ITS 201PRS OPS Digital Accessibility Standard, which that file covers.
-- Use the ODS for every public-facing digital service delivered by an Ontario ministry, or by a provincial agency whose services are integrated with ontario.ca, including procured commercial off-the-shelf software and software-as-a-service products. To add it to an application, use the `add-ontario-design-system` skill.
-- The ODS is not required for internal-facing websites or for agencies whose services are not integrated with ontario.ca. Intranet websites must follow the design elements and content design guidance of the ministry's communications branch.
-- Follow the ODS guidance for navigation, images, and forms, including field labels, buttons, drop-down lists, input formatting, error messages, and live, pre-submission, and post-submission validation.
+- Follow `accessibility.instructions.md`. Ontario ministries must also follow the OPS Digital Accessibility Standard where it applies.
+- Use the Ontario Design System (ODS) for public-facing digital services delivered by Ontario ministries and provincial agencies whose services are integrated with ontario.ca, including applicable procured products.
+- ODS is not required by this standard for internal-facing websites or agencies whose services are not integrated with ontario.ca. Intranet sites must follow the applicable ministry communications guidance.
+- Follow ODS guidance for navigation, images, and forms.
 
-## Content and Language
+## Content and language
 
-- Make all website content follow the Ontario.ca style guide. Write short, descriptive headings and leads, use the active voice and a reading level that suits the audience, add a plain-language summary to technical pages and documents, and define technical terms, abbreviations, and acronyms in context, with a glossary and pronunciation guide where appropriate.
-- Give each online format of a one-time publication, such as a report, budget, or plan, an International Standard Book Number.
-- Never amend government website content for a third-party platform or service, such as social media.
-- Make public-facing websites comply with the French Language Services Act, 1990, including Active Offer and the measures in Ontario Regulation 544/22. Publish all documents equally in English and French at the same time, and post a disclaimer on content that is available only in English. Intranet websites need not be bilingual.
-- Language toggles should lead directly to the same content in the other language. Link text to English or French content must direct the reader to that language version.
-- Content in languages other than English or French should be posted as accessible Portable Document Format (PDF) files, not coded as HyperText Markup Language (HTML).
-- Put a copyright statement in the footer of every non-HTML document published to the public web. Public websites should link to the central copyright statement at https://www.ontario.ca/page/copyright-information.
+- Follow the Ontario.ca style guide. Use concise descriptive headings, plain language, active voice, and a reading level appropriate to the audience. Explain technical terms and abbreviations in context.
+- Apply the relevant publication and metadata requirements, including ISBN requirements for applicable one-time publications.
+- Do not amend Government website content for third-party platforms or services such as social media.
+- Apply the French Language Services Act, 1990, and Ontario Regulation 544/22 to public-facing websites where required, including Active Offer and simultaneous English/French publication requirements. Intranet websites need not be bilingual under this standard.
+- Language toggles must lead to equivalent content in the other language.
+- Publish content in languages other than English or French in accessible PDF format where required by the standard.
+- Include required copyright statements on public-facing non-HTML documents and link to the central copyright statement where applicable: https://www.ontario.ca/page/copyright-information.
 
-## Titles, Links, and Documents
+## Titles, links, and documents
 
-- Apply metadata to every format of web resource as GO-ITS 400DTS Information Resource Description Metadata Standard requires.
-- Give every page a descriptive, concise `<title>` element that is unique to that page. It should use the format `document title | website name` and stay within 65 characters. When the website name includes a ministry name, it must put "Ontario" before the ministry name.
-- Links should be descriptive and should follow the accessibility rules, the ODS, the Ontario.ca style guide, and the Ontario.ca Web Content Editing Guide.
-- Show the format and file size in every link to a non-HTML file, such as `Brochure [PDF — 2 MB]`. Make every link to an alternate language or format version lead to an equivalent page.
-- Create redirects for important pages when a relaunch or content reorganization changes their links.
-- Refer to websites by a fully qualified domain name, never by an Internet Protocol (IP) address or server name.
-- Never use proprietary formats that require users to buy a plug-in or software, and never post Microsoft Office documents to public-facing websites unless legislation authorizes it. Office documents on intranet websites should not contain earlier versions or edits, such as tracked changes.
-- Where information is available only as a PDF because of a legal or security requirement, make it as accessible as technically possible. Make secure documents accessible to assistive technologies.
-- Save alternate-format files so that they work across platforms without degrading the document or compromising security requirements. They should be as small as possible.
+- Apply the applicable GO-ITS 400DTS metadata requirements.
+- Give each page a unique, concise, descriptive `<title>` in the required `document title | website name` format and length. Follow the standard's Ontario and ministry naming rules.
+- Use descriptive links consistent with accessibility, ODS, the Ontario.ca style guide, and the Web Content Editing Guide.
+- Identify the format and file size for links to non-HTML files and provide equivalent alternate-language or alternate-format destinations.
+- Create redirects when important URLs change during a relaunch or content reorganisation.
+- Refer to websites by fully qualified domain name, not IP address or server name.
+- Follow the standard's rules for proprietary formats and Office documents on public-facing and intranet sites.
+- Where a PDF is necessary for legal or security reasons, make it as accessible and secure as technically possible.
 
-## Multimedia and Navigation
+## Multimedia and navigation
 
-- Make public-facing images, video, audio, and applications accessible and compliant with language requirements. Provide a way to navigate through or skip any audio or video presentation that is incidental to the user experience.
-- Public-facing websites should use photographs and videos taken in Ontario of Ontario residents, such as from ImageON, the government's digital asset library, and should use third-party stock or generic settings only when no alternative exists.
-- Embed public-facing videos from the Government of Ontario's central YouTube channels, which host all videos for public-facing websites. For images, maps, and videos on ontario.ca or its subsites, also follow the Ontario.ca Web Content Editing Guide.
-- Let users browse all content, with breadcrumbs and navigation pages, and also let them search any content of more than 30 pages or records. Add a Related section that links to other relevant pages where needed.
-- Websites should provide plain-language "file not found" (404) pages that offer resources and suggest corrections for common errors. When moving popular documents, they should use a proxy redirect or a "moved permanently" (301) page that explains how to reach the information before redirecting.
+- Make public-facing images, video, audio, and applications accessible and compliant with language requirements.
+- Follow the standard's Ontario image and video sourcing guidance, including central Government of Ontario channels and asset libraries where applicable.
+- Provide navigable site structure, breadcrumbs, and search for sites exceeding the standard's content threshold. Include related content where useful.
+- Provide useful 404 pages and appropriate redirects or moved-content explanations for relocated resources.
 
-## Search and Analytics
+## Search and analytics
 
-- Make every website indexable by the ontario.ca Search Service. Serve it with a valid certificate from the OPS-approved enterprise service provider, make dynamically generated content, such as JavaScript-rendered pages, available as static, crawlable files, and meet the title and metadata rules in this file.
-- Where a website with non-classified, low-sensitivity information requires search, use the ontario.ca Search Service.
-- Websites should provide a valid `sitemap.xml` file and `robots.txt` file where applicable.
-- On a search results page, show a search box with the current query at the top, provide refinement options or query assistance, such as filters, sorting, auto-completion, or suggestions, show the total number of results and the number per page, present accurate page titles with concise descriptions based on meta descriptions, and avoid duplicate results for the same address.
-- Collect statistics about site performance and traffic on every website. Track only aggregate behaviour, never use the data to identify individuals unless the law authorizes it, use it only to understand and improve the site, and never share it with or use it in other third-party services or websites for other purposes.
-- For ontario.ca websites, prefer the government's centralized analytics setup, arranged with Cabinet Office Communications.
+- Follow the standard's ontario.ca Search Service indexing, metadata, certificate, and crawlability requirements where applicable.
+- Provide `sitemap.xml` and `robots.txt` where applicable.
+- Present search results with the current query, useful refinement, accurate titles and descriptions, result counts, pagination information, and duplicate handling.
+- Collect aggregate performance and traffic statistics for the purpose of improving the service. Do not identify individuals through analytics unless authorised by law, and do not reuse or share analytics for unrelated purposes.
+- For ontario.ca websites, prefer the central Government analytics setup arranged with Cabinet Office Communications.
 
-## Privacy and Security
+## Privacy and security
 
-- Display a Notice of Collection clearly and conspicuously at or before every point where personal information is collected. State the legal authority for the collection, its purpose, and the contact information of the individual whom the public can contact with questions about the notice.
-- Provide a link to the Ontario Government's central privacy statement at https://www.ontario.ca/page/privacy-statement.
-- Collect only the personal information that the service needs, and mark every non-essential field as optional. Collect more only when a statute authorizes it or the person explicitly consents.
-- Never use personal information in application or server access logs, such as IP addresses, to identify individuals unless legislation authorizes the program or service to do so. Personal data used for analytics should be anonymized or grouped so that individuals cannot be identified.
-- Keep personal information no longer than the service or legislation requires, dispose of it securely under OPS policies, and follow the records retention schedules under the Archives and Recordkeeping Act, 2006, as appropriate.
-- Design state management mechanisms, such as sessions, cookies, and tokens, to prevent unauthorized access to personal information.
-- Serve every website over Hypertext Transfer Protocol Secure (HTTPS) with a valid certificate from the OPS-approved enterprise service provider, and protect every public-facing website with a web application firewall from that provider.
-- Comply with GO-ITS 25.12 for cryptography, GO-ITS 25.13 for web application security, and GO-ITS 42 for vulnerability management, in addition to `secure-coding.instructions.md`.
+- Display a Notice of Collection at or before every point where personal information is collected. State the legal authority, purpose, and contact information for questions.
+- Link to the central Ontario privacy statement: https://www.ontario.ca/page/privacy-statement.
+- Collect only personal information necessary for the service. Mark non-essential fields as optional unless collection is otherwise authorised or explicitly consented to.
+- Do not use personal information in logs to identify individuals unless legislation authorises it. Anonymise or aggregate analytics data.
+- Retain personal information only as long as required and follow applicable disposal and recordkeeping requirements.
+- Design sessions, cookies, tokens, and state management to prevent unauthorised access to personal information.
+- Follow applicable HTTPS, certificate, web application firewall, cryptography, web application security, and vulnerability management standards.
+- Follow `secure-coding.instructions.md`.
 
-## Forms, Feedback, Log-in, and Subscriptions
+## Forms, feedback, log-in, and subscriptions
 
-- Give every public-facing website a feedback mechanism, and list alternate channels where available, such as telephone, teletypewriter, fax, email, and postal address. Feedback forms must also comply with the Accessible Customer Service Policy and the Ontario Government Common Service Standards.
-- Use anti-spam measures wherever an email address is published.
-- On a log-in screen, identify and describe the service being logged in to, give registration instructions, and provide help and a way to recover forgotten or lost credentials. The description and instructions may be on the same page or linked.
-- On a subscription sign-up page, provide a Notice of Collection and a plain-language description of the service. Use subscriber information only for the stated purpose, store it securely out of public reach, limit access to authorized personnel, and protect it as the Corporate Policy on Information Sensitivity Classification requires.
-- Never use mechanisms that reveal the actions or preferences of individual subscribers, such as links with unique identifiers, unless legislation requires them and the service needs them to operate. Give every subscription email an unsubscribe option and a link to a feedback form.
+- Provide a feedback mechanism on public-facing websites and list alternative channels where available. Feedback forms must also meet applicable accessibility and common service requirements.
+- Use anti-spam measures where email addresses are published.
+- Log-in pages must identify the service, explain registration, and provide help and credential-recovery guidance.
+- Subscription pages must provide a Notice of Collection and plain-language service description. Protect subscriber information, restrict access, and use it only for the stated purpose.
+- Do not use tracking mechanisms that reveal individual subscriber actions or preferences unless authorised and necessary. Subscription emails must provide an unsubscribe option and a feedback link.
 
-## Approvals and Directives
+## Compliance and approvals
 
-These obligations need people or teams outside the code. When the work triggers one, tell the user instead of assuming that it was met.
-
-- Cabinet Office Communications must approve new public-facing websites, ontario.ca keywords, which are vanity addresses such as `ontario.ca/<keyword>`, and new ministry social media channels. Ministries must consult it on all ontario.ca requests, on new platforms, products, or applications, and on integration with enterprise platforms.
-- Never register a new external domain name; use only subdomains of ontario.ca or gov.on.ca. The OPS Domain Registrar approves domain requests and owns every public-facing domain, every domain name must follow its Domain Name Guidelines, and decommissioned domains must be reported to it and recorded in the OPS websites database.
-- A public-facing website that collects, uses, or discloses personal information needs a completed Privacy Impact Assessment.
-- For a public-facing website, engage the Cyber Security Division of the Ministry of Public and Business Service Delivery and Procurement to decide whether a Threat Risk Assessment or penetration test is required. The assessment should be revisited after significant changes to the system architecture or data flows. Report security incidents to that division as GO-ITS 25.20 specifies.
-- Cabinet Office Communications and the Premier's Office must approve paid campaigns and, before production and distribution, public-facing video content. Websites used in marketing campaigns must follow government advertising directives and legislation. Public communications must use an ontario.ca keyword, and paid marketing must lead to an ontario.ca page, unless Cabinet Office Communications grants an exemption. Never use external or gov.on.ca domain names for advertising.
-- Inform the Enterprise Web Coordinators and the Web Coordinators Committee co-chairs of new web initiatives through the ministry or cluster Web Coordinator, communicate government-wide changes through that committee, and keep the website's listing in the OPS websites database current.
-- Ministries and provincial agencies must follow Ontario's Responsible Use of Artificial Intelligence Directive.
+- Confirm any approval, exception, security, privacy, architecture, analytics, or publication decision required by the current published standard and the responsible Government of Ontario authority.
+- Do not infer that an approval or exception exists. Record the evidence and status.
+- Report the specific requirements reviewed, evidence, gaps, and decisions still required. Do not certify overall compliance.
